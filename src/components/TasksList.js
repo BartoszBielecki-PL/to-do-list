@@ -32,11 +32,13 @@ const TasksList = (props) => {
   return (
     <div className="wrap">
       <h3> Active tasks </h3>
-      {activeTasksList}
+      {activeTasksList.length > 0
+        ? activeTasksList
+        : "Nothing to do... Come on!"}
       <h3> To check tasks </h3>
-      {toCheckTasksList}
+      {toCheckTasksList.length > 0 ? toCheckTasksList : "Start coding!"}
       <h3> Done tasks </h3>
-      {doneTasksList}
+      {doneTasksList.length > 0 ? doneTasksList : "Why NOTHING is DONE!?"}
     </div>
   );
 };

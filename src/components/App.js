@@ -3,13 +3,39 @@ import "./App.css";
 import AddTask from "./AddTask";
 
 class App extends Component {
-  state = {};
+  counter = 0;
+  state = {
+    id: 0,
+    text: "",
+    isActive: false,
+    isReadyToCheck: false,
+    isDone: false,
+    taskType: "",
+    tasks: [],
+  };
+
+  addTask = (text, taskType) => {
+    const task = {
+      id: this.counter,
+      text,
+      taskType,
+      isActive: true,
+      isReadyToCheck: false,
+      isDone: false,
+    };
+    this.counter++;
+
+    const tasks = [...this.state.tasks];
+    tasks.push(task);
+    this.setState({
+      tasks,
+    });
+  };
 
   render() {
-    const { text, important, date } = this.state;
     return (
       <div>
-        <AddTask value={text} important={important} date={date} />
+        <AddTask add={this.addTask} />
       </div>
     );
   }

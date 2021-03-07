@@ -1,41 +1,99 @@
 import React, { Component } from "react";
 import "./App.css";
 import AddTask from "./AddTask";
+import TasksList from "./TasksList";
 
 class App extends Component {
   counter = 0;
   state = {
-    id: 0,
-    text: "",
-    isActive: false,
-    isReadyToCheck: false,
-    isDone: false,
-    taskType: "",
     tasks: [],
   };
 
-  addTask = (text, taskType) => {
+  addNewTask = (text, taskType) => {
     const task = {
       id: this.counter,
-      text,
-      taskType,
+      text: text,
+      taskType: taskType,
       isActive: true,
       isReadyToCheck: false,
       isDone: false,
     };
-    this.counter++;
 
-    const tasks = [...this.state.tasks];
+    let tasks = [...this.state.tasks];
     tasks.push(task);
+
+    this.setState({
+      tasks,
+    });
+    this.counter++;
+    return true;
+  };
+
+  changeStatusToCheck = (id) => {
+    let tasks = [...this.state.tasks];
+    tasks.forEach((task) => {
+      if (task.id === id) {
+        task.isActive = false;
+        task.isReadyToCheck = true;
+      }
+    });
+
+    this.setState({
+      tasks,
+    });
+  };
+
+  repeatTask = (id) => {
+    let tasks = [...this.state.tasks];
+    tasks.forEach((task) => {
+      if (task.id === id) {
+        task.isActive = true;
+        task.isReadyToCheck = false;
+      }
+    });
+
+    this.setState({
+      tasks,
+    });
+  };
+
+  completeFullyTask = (id) => {
+    let tasks = [...this.state.tasks];
+    tasks.forEach((task) => {
+      if (task.id === id) {
+        task.isReadyToCheck = false;
+        task.isDone = true;
+      }
+    });
+
+    this.setState({
+      tasks,
+    });
+  };
+
+  deleteTask = (id) => {
+    let tasks = [...this.state.tasks];
+    const index = tasks.findIndex((task) => task.id === id);
+
+    tasks.splice(index, 1);
+
     this.setState({
       tasks,
     });
   };
 
   render() {
+    const { tasks } = this.state;
     return (
       <div>
-        <AddTask add={this.addTask} />
+        <AddTask add={this.addNewTask} />
+        <TasksList
+          tasks={tasks}
+          delete={this.deleteTask}
+          changeStatusToCheck={this.changeStatusToCheck}
+          repeatTask={this.repeatTask}
+          completeFullyTask={this.completeFullyTask}
+        />
       </div>
     );
   }

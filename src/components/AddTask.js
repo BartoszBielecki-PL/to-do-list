@@ -54,10 +54,10 @@ class AddTask extends Component {
     }
   };
 
-  handleClick = (props) => {
+  handleClick = () => {
     const { text, typeOfTask } = this.state;
     if (text.length >= 2 && typeOfTask) {
-      const add = props.add(text, typeOfTask);
+      const add = this.props.add(text, typeOfTask);
       if (add) {
         this.setState({
           text: "",
@@ -67,11 +67,11 @@ class AddTask extends Component {
           other: false,
           typeOfTask: "",
         });
-      } else {
-        alert(
-          "Fulfill all necessary informations (task description and type of task)"
-        );
       }
+    } else {
+      alert(
+        "Fulfill all necessary informations (task description and type of task)"
+      );
     }
   };
 
@@ -82,7 +82,7 @@ class AddTask extends Component {
         <input
           type="text"
           placeholder="Enter task..."
-          onChange={this.handleCheckboxChange}
+          onChange={this.handleInputChange}
           value={text}
         />
         <div className="checkboxes">

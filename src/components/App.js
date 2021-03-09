@@ -85,7 +85,7 @@ class App extends Component {
   render() {
     const { tasks } = this.state;
     return (
-      <div>
+      <div className="wrap">
         <AddTask add={this.addNewTask} />
         <TasksList
           tasks={tasks}

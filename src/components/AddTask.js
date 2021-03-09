@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./AddTask.sass";
 
 class AddTask extends Component {
   minDate = new Date().toISOString().slice(0, 10);
@@ -81,41 +82,52 @@ class AddTask extends Component {
       <div className="form">
         <input
           type="text"
+          className="textInput"
           placeholder="Enter task..."
           onChange={this.handleInputChange}
           value={text}
         />
         <div className="checkboxes">
-          <input
-            type="checkbox"
-            checked={javaScript}
-            onChange={this.handleCheckboxChange}
-            value="js"
-          />
-          <label htmlFor="javaScript">JavaScript</label>
-          <input
-            type="checkbox"
-            checked={html}
-            onChange={this.handleCheckboxChange}
-            value="html"
-          />
-          <label htmlFor="javaScript">HTML</label>
-          <input
-            type="checkbox"
-            checked={css}
-            onChange={this.handleCheckboxChange}
-            value="css"
-          />
-          <label htmlFor="javaScript">CSS</label>
-          <input
-            type="checkbox"
-            checked={other}
-            onChange={this.handleCheckboxChange}
-            value="other"
-          />
-          <label htmlFor="javaScript">Other</label>
+          <div>
+            <input
+              type="checkbox"
+              checked={javaScript}
+              onChange={this.handleCheckboxChange}
+              value="js"
+            />
+            <label htmlFor="javaScript"> JavaScript </label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              checked={html}
+              onChange={this.handleCheckboxChange}
+              value="html"
+            />
+            <label htmlFor="javaScript"> HTML </label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              checked={css}
+              onChange={this.handleCheckboxChange}
+              value="css"
+            />
+            <label htmlFor="javaScript"> CSS </label>
+          </div>
+          <div>
+            <input
+              type="checkbox"
+              checked={other}
+              onChange={this.handleCheckboxChange}
+              value="other"
+            />
+            <label htmlFor="javaScript"> Other </label>
+          </div>
         </div>
-        <button onClick={this.handleClick}>Add task!</button>
+        <button className="btn btn-success" onClick={this.handleClick}>
+          Add task!
+        </button>
       </div>
     );
   }

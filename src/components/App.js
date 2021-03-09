@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./App.scss";
 import AddTask from "./AddTask";
 import TasksList from "./TasksList";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
   counter = 0;

@@ -1,5 +1,6 @@
 import React from "react";
 import Task from "./Task";
+import "./TasksList.sass";
 
 const TasksList = (props) => {
   const activeTasks = props.tasks.filter((task) => task.isActive);
@@ -30,15 +31,21 @@ const TasksList = (props) => {
   ));
 
   return (
-    <div className="wrap">
-      <h3> Active tasks </h3>
-      {activeTasksList.length > 0
-        ? activeTasksList
-        : "Nothing to do... Come on!"}
-      <h3> To check tasks </h3>
-      {toCheckTasksList.length > 0 ? toCheckTasksList : "Start coding!"}
-      <h3> Done tasks </h3>
-      {doneTasksList.length > 0 ? doneTasksList : "Why NOTHING is DONE!?"}
+    <div className="wrapTasksList">
+      <div>
+        <h3> Active tasks </h3>
+        {activeTasksList.length > 0
+          ? activeTasksList
+          : "Nothing to do... Come on!"}
+      </div>
+      <div>
+        <h3> To check tasks </h3>{" "}
+        {toCheckTasksList.length > 0 ? toCheckTasksList : "Start coding!"}
+      </div>
+      <div>
+        <h3> Done tasks </h3>{" "}
+        {doneTasksList.length > 0 ? doneTasksList : "Why NOTHING is DONE!?"}
+      </div>
     </div>
   );
 };

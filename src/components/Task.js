@@ -1,4 +1,5 @@
 import React from "react";
+import "./Task.sass";
 
 const Task = (props) => {
   const { text, isActive, isDone, isReadyToCheck, taskType, id } = props.task;
@@ -9,12 +10,12 @@ const Task = (props) => {
         <p>
           [{taskType.toUpperCase()}] {text}
           <button
-            className="approveButton"
+            className="btn btn-success"
             onClick={() => props.changeStatusToCheck(id)}
           >
             Done!
           </button>
-          <button className="deleteButton" onClick={() => props.delete(id)}>
+          <button className="btn btn-danger" onClick={() => props.delete(id)}>
             Delete!
           </button>
         </p>
@@ -24,19 +25,22 @@ const Task = (props) => {
 
   if (isReadyToCheck) {
     return (
-      <div key={id}>
+      <div key={id} className="singleTask">
         <p>
           [{taskType.toUpperCase()}] {text}
           <button
-            className="approveButton"
+            className="btn btn-success"
             onClick={() => props.completeFullyTask(id)}
           >
             Done!
           </button>
-          <button className="repeat" onClick={() => props.repeatTask(id)}>
+          <button
+            className="btn btn-warning"
+            onClick={() => props.repeatTask(id)}
+          >
             Repeat!
           </button>
-          <button className="deleteButton" onClick={() => props.delete(id)}>
+          <button className="btn btn-danger" onClick={() => props.delete(id)}>
             Delete!
           </button>
         </p>
@@ -46,13 +50,13 @@ const Task = (props) => {
 
   if (isDone) {
     return (
-      <div key={id}>
+      <div key={id} className="wrapTask">
         <p>
           [{taskType.toUpperCase()}] {text}
-          <button className="deleteButton" onClick={() => props.delete(id)}>
-            Delete!
-          </button>
         </p>
+        <button className="btn btn-danger" onClick={() => props.delete(id)}>
+          Delete!
+        </button>
       </div>
     );
   }

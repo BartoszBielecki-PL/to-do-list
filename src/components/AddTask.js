@@ -95,7 +95,7 @@ class AddTask extends Component {
               onChange={this.handleCheckboxChange}
               value="js"
             />
-            <label htmlFor="javaScript"> JavaScript </label>
+            <label htmlFor="javaScript"> JS </label>
           </div>
           <div>
             <input

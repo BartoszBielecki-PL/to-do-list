@@ -6,7 +6,7 @@ const Task = (props) => {
 
   if (isActive) {
     return (
-      <div key={id}>
+      <div key={id} className="singleTask">
         <p>
           [{taskType.toUpperCase()}] {text}
           <button
@@ -50,13 +50,13 @@ const Task = (props) => {
 
   if (isDone) {
     return (
-      <div key={id} className="wrapTask">
+      <div key={id} className="singleTask">
         <p>
           [{taskType.toUpperCase()}] {text}
+          <button className="btn btn-danger" onClick={() => props.delete(id)}>
+            Delete!
+          </button>
         </p>
-        <button className="btn btn-danger" onClick={() => props.delete(id)}>
-          Delete!
-        </button>
       </div>
     );
   }
